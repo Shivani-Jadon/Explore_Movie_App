@@ -1,5 +1,6 @@
 import React from 'react';
 import { data } from '../data';
+import { addMovies } from '../action';	//when export isn't default
 import Navbar from '../component/Navbar';
 import MovieCard from '../component/MovieCard';
 
@@ -15,10 +16,7 @@ class App extends React.Component {
 		});
 
 		// API call
-		store.dispatch({
-			type : 'ADD_MOVIES',
-			movies : data 
-		  });
+		store.dispatch( addMovies(data) );
 
 		console.log(store.getState());
 
