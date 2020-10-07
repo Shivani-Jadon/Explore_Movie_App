@@ -8,7 +8,7 @@ body {
   background: #f1f1f1;
 }
 .nav {
-  background: black;
+  background : #000000bf;
   height: 70px;
   padding: 10px;
   box-sizing: border-box;
@@ -116,7 +116,8 @@ body {
   background: #e1e1e1;
 }
 .movie-card {
-  background: #fff;
+  background: #000000bf;
+  color: aliceblue;
   padding: 0;
   border: none;
   border-radius: 3px;
@@ -173,11 +174,11 @@ body {
   font-weight: 600;
 }
 .favourite-btn {
-  background-color: #2185d0;
+  background-color: #21ba45b5;
   color: #fff;
 }
 .unfavourite-btn {
-  background-color: #db2828;
+  background-color: indianred;
   color: #fff;
   text-shadow: none;
 }
@@ -192,5 +193,12 @@ body {
   }
   .footer{
     position: relative;
+  }
+  .movie-card .left img {
+    width: 70vw;
+    padding: 10px 20px;
+  }
+  .movie-card .plot{
+    max-height: 100%;
   }
 }
