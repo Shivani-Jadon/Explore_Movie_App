@@ -1,17 +1,28 @@
-import { ADD_MOVIES } from '../action';
+import { ADD_MOVIES, ADD_FAVOURITE } from '../action';
 
 const initialMoviesState = {
     list : [],
-    favurites : []
+    favourites : []
 }
 
 function reducer(state = initialMoviesState , action){
-    if(action.type === ADD_MOVIES){
-        return {
-            ...state,
-            list : action.movies
-        };
+    
+    switch(action.type) {
+        case ADD_MOVIES : return {
+                                ...state,
+                                list : action.movies
+                            };
+                        break;
+
+        case ADD_FAVOURITE : return {
+                                ...state,
+                                favourites : [  action.movie , ...state.favourites  ]
+                            }      
+                            break;          
+
+        default : return state;                    
     }
+
     // will return the default state if no action is defined
     return state;
 }

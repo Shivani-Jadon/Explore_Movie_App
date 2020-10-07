@@ -1,6 +1,6 @@
 import React from 'react';
 import { data } from '../data';
-import { addMovies } from '../action';	//when export isn't default
+import { addMovies, addFavourite } from '../action';	//when export isn't default
 import Navbar from '../component/Navbar';
 import MovieCard from '../component/MovieCard';
 
@@ -19,10 +19,20 @@ class App extends React.Component {
 		store.dispatch( addMovies(data) );
 
 		console.log(store.getState());
-
 		
 	}
 	
+	isMovieFavourite = (movie) => {
+		const { favourites } = this.props.store.getState();
+		const index = favourites.indexOf(movie);
+
+		if( index !== -1){
+			return true;
+		}else{
+			return false;
+		}
+    }
+
 	render () {
 		
 		const { list } = this.props.store.getState(); 	//list : [], favurites : []
@@ -39,7 +49,9 @@ class App extends React.Component {
 					</div>
 					<div className='list'>
 						{list.map( (movie, index) => (
-							<MovieCard movie={movie} key={`movie_${index}`} />
+							<MovieCard movie={movie}   key={`movie_${index}`}
+								dispatch={this.props.store.dispatch}
+								isFavourite = { this.isMovieFavourite(movie) }	/>
 						))}
 					</div>
 				</main>
