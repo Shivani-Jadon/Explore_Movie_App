@@ -32,10 +32,10 @@ class App extends React.Component {
 			<div className="App">
 				<Navbar />
 
-				<main>
-					<div>
-						<button className='tab-btn'>Movie List</button>
-						<button className='tab-btn'>Favourites</button>
+				<main className='main'>
+					<div className='tabs'>
+						<button className='tab active-tabs'>Movie List</button>
+						<button className='tab'>Favourites</button>
 					</div>
 					<div className='list'>
 						{movies.map( (movie, index) => (

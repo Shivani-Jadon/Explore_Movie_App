@@ -3,9 +3,11 @@ import React from 'react';
 class Navbar extends React.Component{
     render(){
         return (
-            <div>
-                <input type='text' />
-                <div>Search</div>
+            <div  className='nav' >
+                <div className='search-container' >
+                    <input type='text' />
+                </div>
+                <button id='search-btn'>Search</button>
             </div>
         )
     }

@@ -5,17 +5,17 @@ class MovieCard extends React.Component{
         const movie = this.props.movie;
 
         return (
-            <div className='card'>
-                <div className='poster'>
+            <div className='movie-card'>
+                <div className='left'>
                     <img src={movie.Poster} alt="movie poster" />
                 </div>
-                <div className='description'>
+                <div className='right'>
                     <div className='title'>{movie.Title}</div>
                     <div className='plot'>{movie.Plot}</div>
-                    <footer>
-                        <div className='ratings'>{movie.imdbRating}</div>
-                        <div className='add-favourites'>Add to favourites</div>
-                    </footer>
+                    <div className='footer' >
+                        <div className='rating'>{movie.imdbRating}</div>
+                        <button className='favourite-btn'>Add to favourite</button>
+                    </div>
                 </div>
             </div>
         )
