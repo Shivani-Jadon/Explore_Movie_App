@@ -1,4 +1,4 @@
-import { ADD_MOVIES, ADD_FAVOURITE } from '../action';
+import { ADD_MOVIES, ADD_FAVOURITE, REMOVE_FAVOURITE } from '../action';
 
 const initialMoviesState = {
     list : [],
@@ -19,6 +19,14 @@ function reducer(state = initialMoviesState , action){
                                 favourites : [  action.movie , ...state.favourites  ]
                             }      
                             break;          
+
+        case REMOVE_FAVOURITE : let favourites = [...state.favourites  ];
+                                favourites.splice(favourites.indexOf(action.movie), 1)
+                                return {
+                                    ...state,
+                                    favourites : [ ...favourites ]
+                                }
+                                break;
 
         default : return state;                    
     }
