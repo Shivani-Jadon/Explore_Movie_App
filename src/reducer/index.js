@@ -53,10 +53,10 @@ export function searchReducer(state = initialSearchState, action){
     return state
 }
 
-const initialRootState = {
-    movies : initialMoviesState,
-    search : initialSearchState
-}
+// const initialRootState = {
+//     movies : initialMoviesState,
+//     search : initialSearchState
+// }
 
 // function rootReducer(state = initialRootState, action){
 //     return {

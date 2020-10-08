@@ -31,3 +31,19 @@ export function setShowFavourite(val) {
         val
     }
 }
+
+export function handleMovieSearch(movie) {
+    const url = `http://www.omdbapi.com/?apikey=[5fa446ae]&t=${movie}`;
+
+    return function(dispatch){
+        fetch(url)
+            .then(response => response.json())
+            .then(movie => {
+                console.log("Movie : ", movie)
+            })
+
+        // dispatching an action
+        // dispatch({type: 'ADD_SERACH_RESULT', movie})
+    }
+   
+}

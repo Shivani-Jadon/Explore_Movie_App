@@ -49,7 +49,7 @@ class App extends React.Component {
 
 		return (
 			<div className="App">
-				<Navbar />
+				<Navbar dispatch={this.props.store.dispatch} />
 
 				<main className='main'>
 					<div className='tabs'>
