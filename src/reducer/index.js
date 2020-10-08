@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux';
  
-import { ADD_MOVIES, ADD_FAVOURITE, REMOVE_FAVOURITE, SHOW_FAVOURITE } from '../action';
+import { ADD_MOVIES,
+         ADD_FAVOURITE,
+         REMOVE_FAVOURITE,
+         SHOW_FAVOURITE, 
+         ADD_MOVIE_TO_LIST, 
+         ADD_SEARCH_RESULT } from '../action';
 
 const initialMoviesState = {
     list : [],
@@ -15,13 +20,13 @@ export function movieReducer(state = initialMoviesState , action){
                                 ...state,
                                 list : action.movies
                             };
-                        break;
+            
 
         case ADD_FAVOURITE : return {
                                 ...state,
                                 favourites : [  action.movie , ...state.favourites  ]
                             }      
-                            break;          
+                             
 
         case REMOVE_FAVOURITE : let favourites = [...state.favourites  ];
                                 favourites.splice(favourites.indexOf(action.movie), 1)
@@ -29,13 +34,19 @@ export function movieReducer(state = initialMoviesState , action){
                                     ...state,
                                     favourites : [ ...favourites ]
                                 }
-                                break;
+                        
 
         case SHOW_FAVOURITE :  return {
                                     ...state,
                                     showFavourite : action.val
                                 };
-                            break;                      
+                                         
+        
+        case ADD_MOVIE_TO_LIST : return {
+                                    ...state,
+                                    list : [action.movies, ...state.list]
+                                };
+                    
 
         default : return state;                    
     }
@@ -45,12 +56,27 @@ export function movieReducer(state = initialMoviesState , action){
 }
 
 const initialSearchState = {
-    result : {}
+    result : {},
+    showSearchResults : false
 }
 
 export function searchReducer(state = initialSearchState, action){
-    console.log("Search Reducer");
-    return state
+    switch(action.type) {
+        case ADD_SEARCH_RESULT : return {
+                                    ...state,
+                                    result : action.movie ,
+                                    showSearchResults : true
+                                }
+        
+        case ADD_MOVIE_TO_LIST : return {
+                                    ...state,
+                                    showSearchResults : false
+                                };
+
+        default : return state;
+     
+    }
+
 }
 
 // const initialRootState = {
