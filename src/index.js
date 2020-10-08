@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import './index.css';
 import App from './component/App';
 import rootReducer from './reducer';
 
-const store = createStore(rootReducer);
+// middleware to modify reducer before dispatch
+const logger = ({dispatch, getstate}) => (next) => (action) => {
+	// middleware code
+	console.log("Action type : ", action.type);
+	next(action);
+}
+
+const store = createStore( rootReducer, applyMiddleware(logger) );
 console.log("Store", store);
 console.log("State before", store.getState() );
 
