@@ -6,8 +6,8 @@ const initialMoviesState = {
     showFavourite : false
 }
 
-function reducer(state = initialMoviesState , action){
-    
+export function movieReducer(state = initialMoviesState , action){
+    console.log("Movie Reducer");
     switch(action.type) {
         case ADD_MOVIES : return {
                                 ...state,
@@ -42,4 +42,25 @@ function reducer(state = initialMoviesState , action){
     return state;
 }
 
-export default reducer;
+const initialSearchState = {
+    result : {}
+}
+
+export function searchReducer(state = initialSearchState, action){
+    console.log("Search Reducer");
+    return state
+}
+
+const initialRootState = {
+    movies : initialMoviesState,
+    search : initialSearchState
+}
+
+function rootReducer(state = initialRootState, action){
+    return {
+        movies : movieReducer( state.movies, action ), 
+        search : searchReducer( state.search, action )
+    }
+}
+
+export default rootReducer;

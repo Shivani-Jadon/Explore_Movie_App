@@ -4,19 +4,19 @@ import { createStore } from 'redux';
 
 import './index.css';
 import App from './component/App';
-import movies from './reducer';
+import rootReducer from './reducer';
 
-const store = createStore(movies);
+const store = createStore(rootReducer);
 console.log("Store", store);
 console.log("State before", store.getState() );
 
 // dispatch the action and return new state
-store.dispatch({
-  type : 'ADD_MOVIES',
-  movies : [{name : 'Superman'}]
-});
+// store.dispatch({
+//   type : 'ADD_MOVIES',
+//   movies : [{name : 'Superman'}]
+// });
 
-console.log("State after", store.getState() );
+// console.log("State after", store.getState() );
 
 ReactDOM.render(
 
