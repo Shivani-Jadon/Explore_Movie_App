@@ -109,7 +109,7 @@ console.log("State before", store.getState() );
 // 	}
 // }
 
-/* Provider , Context and connect are provided by react-redux package'
+/* Provider , Context and connect are provided by react-redux package' */
 
 ReactDOM.render(
 
@@ -119,4 +119,4 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-;
+
