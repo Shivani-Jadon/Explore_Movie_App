@@ -43,6 +43,7 @@ console.log("State before", store.getState() );
 // create React Context for store
 export const StoreContext = React.createContext();
 
+// Provider will provide StoreContext to the components
 class Provider extends React.Component{
 
 	render(){
@@ -55,6 +56,58 @@ class Provider extends React.Component{
 		)		
 	}
 }
+
+
+//	Implement connect function
+	//  const connectComponent = connect(callback)(component)
+export function connect(mapStatetoProps){
+	return function(Component){
+		class ConnectComponent extends React.Component{			
+			constructor(props){
+				super(props);
+				this.unsubscribe = store.subscribe(() => {
+						console.log("State updated");
+						// forceUpdate should not be used as it forces to update state
+						this.forceUpdate();
+					});
+		
+			}
+
+			componentWillUnmount(){
+				this.unsubscribe();
+			}
+
+			render(){
+				return (
+					<StoreContext.Consumer>
+						{(store) => {
+							const state = store.getState();
+							const dataPassedAsProps = mapStatetoProps(state);
+							return (
+								<Component {...dataPassedAsProps} dispatch={store.dispatch}/>
+							)
+							
+							}
+						}
+					</StoreContext.Consumer>
+				)
+			}
+		} 
+
+		class ConnectComponentWrapper extends React.Component{
+			render(){
+				return (
+					<StoreContext.Consumer>
+						{(store) => <ConnectComponent store={store} />}
+					</StoreContext.Consumer>	
+				)
+			}
+		}
+
+		return ConnectComponentWrapper;
+	}
+}
+
 
 ReactDOM.render(
 
