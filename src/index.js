@@ -39,10 +39,29 @@ console.log("State before", store.getState() );
 
 // console.log("State after", store.getState() );
 
+
+// create React Context for store
+export const StoreContext = React.createContext();
+
+class Provider extends React.Component{
+
+	render(){
+		const { store } = this.props;
+
+		return (
+			<StoreContext.Provider value={store}>
+				{this.props.children}
+			</StoreContext.Provider>
+		)		
+	}
+}
+
 ReactDOM.render(
 
-    <App store={store} />,
-  document.getElementById('root')
+	<Provider store={store}>
+		<App />
+	</Provider>,
+    document.getElementById('root')
 );
 
 ;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { StoreContext } from '../index';
 import { data } from '../data';
 import { addMovies, addFavourite, setShowFavourite } from '../action';	//when export isn't default
 import Navbar from '../component/Navbar';
@@ -71,4 +72,16 @@ class App extends React.Component {
 		}
 }
 
-export default App;
+
+class AppWrapper extends React.Component{
+
+	render(){
+		return (
+		<StoreContext.Consumer>
+			{(store) => <App store={store} />}
+		</StoreContext.Consumer>
+		)
+	}
+}
+
+export default AppWrapper;
