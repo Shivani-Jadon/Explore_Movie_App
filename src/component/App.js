@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from '../index';
+import { connect } from 'react-redux';
 import { data } from '../data';
 import { addMovies, addFavourite, setShowFavourite } from '../action';	//when export isn't default
 import Navbar from '../component/Navbar';

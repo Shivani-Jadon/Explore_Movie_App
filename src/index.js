@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './component/App';
@@ -41,73 +42,74 @@ console.log("State before", store.getState() );
 
 
 // create React Context for store
-export const StoreContext = React.createContext();
+// export const StoreContext = React.createContext();
 
 // Provider will provide StoreContext to the components
-class Provider extends React.Component{
+// class Provider extends React.Component{
 
-	render(){
-		const { store } = this.props;
+// 	render(){
+// 		const { store } = this.props;
 
-		return (
-			<StoreContext.Provider value={store}>
-				{this.props.children}
-			</StoreContext.Provider>
-		)		
-	}
-}
+// 		return (
+// 			<StoreContext.Provider value={store}>
+// 				{this.props.children}
+// 			</StoreContext.Provider>
+// 		)		
+// 	}
+// }
 
 
 //	Implement connect function
 	//  const connectComponent = connect(callback)(component)
-export function connect(mapStatetoProps){
-	return function(Component){
-		class ConnectComponent extends React.Component{			
-			constructor(props){
-				super(props);
-				this.unsubscribe = store.subscribe(() => {
-						console.log("State updated");
-						// forceUpdate should not be used as it forces to update state
-						this.forceUpdate();
-					});
+// export function connect(mapStatetoProps){
+// 	return function(Component){
+// 		class ConnectComponent extends React.Component{			
+// 			constructor(props){
+// 				super(props);
+// 				this.unsubscribe = store.subscribe(() => {
+// 						console.log("State updated");
+// 						// forceUpdate should not be used as it forces to update state
+// 						this.forceUpdate();
+// 					});
 		
-			}
+// 			}
 
-			componentWillUnmount(){
-				this.unsubscribe();
-			}
+// 			componentWillUnmount(){
+// 				this.unsubscribe();
+// 			}
 
-			render(){
-				return (
-					<StoreContext.Consumer>
-						{(store) => {
-							const state = store.getState();
-							const dataPassedAsProps = mapStatetoProps(state);
-							return (
-								<Component {...dataPassedAsProps} dispatch={store.dispatch}/>
-							)
+// 			render(){
+// 				return (
+// 					<StoreContext.Consumer>
+// 						{(store) => {
+// 							const state = store.getState();
+// 							const dataPassedAsProps = mapStatetoProps(state);
+// 							return (
+// 								<Component {...dataPassedAsProps} dispatch={store.dispatch}/>
+// 							)
 							
-							}
-						}
-					</StoreContext.Consumer>
-				)
-			}
-		} 
+// 							}
+// 						}
+// 					</StoreContext.Consumer>
+// 				)
+// 			}
+// 		} 
 
-		class ConnectComponentWrapper extends React.Component{
-			render(){
-				return (
-					<StoreContext.Consumer>
-						{(store) => <ConnectComponent store={store} />}
-					</StoreContext.Consumer>	
-				)
-			}
-		}
+// 		class ConnectComponentWrapper extends React.Component{
+// 			render(){
+// 				return (
+// 					<StoreContext.Consumer>
+// 						{(store) => <ConnectComponent store={store} />}
+// 					</StoreContext.Consumer>	
+// 				)
+// 			}
+// 		}
 
-		return ConnectComponentWrapper;
-	}
-}
+// 		return ConnectComponentWrapper;
+// 	}
+// }
 
+/* Provider , Context and connect are provided by react-redux package'
 
 ReactDOM.render(
 
