@@ -44,7 +44,7 @@ export function movieReducer(state = initialMoviesState , action){
         
         case ADD_MOVIE_TO_LIST : return {
                                     ...state,
-                                    list : [action.movies, ...state.list]
+                                    list : [action.movie, ...state.list]
                                 };
                     
 

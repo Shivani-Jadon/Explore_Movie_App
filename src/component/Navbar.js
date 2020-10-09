@@ -14,7 +14,7 @@ class Navbar extends React.Component{
     handleSearch = () => {
         const { searchText } = this.state;
 
-        this.props.dispatch(handleMovieSearch(searchText));
+        this.props.dispatch( handleMovieSearch(searchText) );
     }
 
     handleChange = (e) => {
@@ -24,6 +24,8 @@ class Navbar extends React.Component{
     }
 
     handleAddMovie = (movie) => {
+
+        console.log("Adding movie ", movie);
         this.props.dispatch(addMovieToList(movie));
         // this.setState({
         //     showSearchResults : false
@@ -33,6 +35,7 @@ class Navbar extends React.Component{
     render(){
 
         const { result, showSearchResults } = this.props.search;
+        // console.log("Result : ", result);
 
         return (
             <div  className='nav' >
@@ -45,7 +48,7 @@ class Navbar extends React.Component{
                                 <img src={ result.Poster } alt='poster' />
                                 <div className='movie-info'>
                                     <span>{ result.Title }</span>
-                                    <button onClick={this.handleAddMovie}>Add Movie</button>
+                                    <button onClick={() => this.handleAddMovie(result) }>Add Movie</button>
                                 </div>                        
                             </div>
                         </div>}
