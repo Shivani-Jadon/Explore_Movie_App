@@ -1,7 +1,37 @@
 # Movie_Explore_App
-An Application built using React and Redux to explore movies
+An Application built using React and Redux to explore movies. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+- Lists Poster, preview and ratings of the movie
+- Can add favourite movies
+- Remove from favourite list
+- Uses Omdb API to search movies
+- Can add search result to movie list
+
+Thanks to Omdb API for functioning of search feature of the App
+
+## Preview
+ Checkout the application here 
+ [Demo]()
+
+## Component Structure
+- ```src/cpmponent``` contains all the React components for application
+- ```src/data``` Data is selected, filtered and kept as json 
+- ```action & reducer``` Action and Reducer act as middleware to add functionality to the app
+
+### Running the Application
+- Clone the repository
+- Navigate to the respository in the console
+- Install npm if haven't
+- Download all the dependencies and required modules
+    ``` 
+    npm install
+    ```
+- Run the application in your browser by running following command in the console
+    ```
+    npm start
+    ```
+- The application will start running at localhost server 3000 
 
 ## Available Scripts
 
