@@ -12,7 +12,7 @@ Thanks to Omdb API for functioning of search feature of the App
 
 ## Preview
  Checkout the application here 
- [Demo]()
+ [Demo](https://shivani-jadon.github.io/Explore_Movie_App/)
 
 ## Component Structure
 - ```src/cpmponent``` contains all the React components for application
